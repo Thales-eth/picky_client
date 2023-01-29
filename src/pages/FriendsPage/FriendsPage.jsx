@@ -17,7 +17,6 @@ const FriendsPage = () => {
 
     const checkIfFriends = (id) => {
         const mappedFriends = newFriends.map(({ _id }) => _id)
-        // console.log(mappedFriends, id)
         return mappedFriends.includes(id)
     }
 
