@@ -55,18 +55,21 @@ const Feed = () => {
             {
                 friendsPhotos.map(({ _id, url, createdAt, author: { avatar, username } }) => {
                     return (
-                        <div key={_id}>
-                            <img style={{ width: "50px", height: "50px", borderRadius: "50%" }} src={avatar} alt="avatar" />
-                            <span>{username}</span>
-                            <img src={url} alt="" />
-                            <span>{Math.floor((Date.now() - new Date(createdAt).getTime()) / 1000 / 60)} minutes</span>
-                            {
-                                checkIfFavorite(_id) ?
-                                    <AiFillHeart onClick={() => dislike(_id)} color='red' size="30px" style={{ cursor: "pointer" }} />
-                                    :
-                                    <AiOutlineHeart onClick={() => likePhoto(_id)} color='red' size="30px" style={{ cursor: "pointer" }} />
-                            }
-                        </div>
+                        <a key={_id} href={`/photo/${_id}`}>
+                            <div>
+                                <img style={{ width: "50px", height: "50px", borderRadius: "50%" }} src={avatar} alt="avatar" />
+                                <span>{username}</span>
+                                <img src={url} alt="" />
+                                <span>{Math.floor((Date.now() - new Date(createdAt).getTime()) / 1000 / 60)} minutes</span>
+                                {
+                                    checkIfFavorite(_id) ?
+                                        <AiFillHeart onClick={() => dislike(_id)} color='red' size="30px" style={{ cursor: "pointer" }} />
+                                        :
+                                        <AiOutlineHeart onClick={() => likePhoto(_id)} color='red' size="30px" style={{ cursor: "pointer" }} />
+                                }
+                            </div>
+                            <hr />
+                        </a>
                     )
                 })
             }

@@ -4,7 +4,7 @@ import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/auth.context';
 import { MessageContext } from '../../context/userMessage.context';
-// import Loader from '../Loader/Loader'
+import Loader from '../Loader/Loader'
 
 function NavBar() {
 
@@ -35,18 +35,18 @@ function NavBar() {
                             <NavDropdown.Divider />
                             <NavDropdown.Item onClick={logout} href="#">Logout</NavDropdown.Item>
                         </NavDropdown>
-                        {/* {
+                        {
                             user &&
                             <Nav.Link href="/my-profile">
                                 {
                                     !isLoading
                                         ?
-                                        <img className='avatar' src={user?.avatar} alt="avatar" />
+                                        <img className='avatar' style={{ width: "30px", borderRadius: "50%" }} src={user?.avatar} alt="avatar" />
                                         :
                                         <Loader />
                                 }
                             </Nav.Link>
-                        } */}
+                        }
                     </Nav>
                 </Container>
             </Navbar>
