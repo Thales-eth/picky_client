@@ -14,7 +14,7 @@ const UserMessage = () => {
             onClose={() => setShowMessage({ ...showMessage, show: false })}
             style={{ position: 'fixed', bottom: 30, right: 30 }}
             autohide
-            delay={5000}
+            delay={20000}
         >
             <Toast.Header>
                 <strong className="me-auto">{showMessage.title}</strong>

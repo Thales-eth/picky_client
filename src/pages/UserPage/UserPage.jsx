@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../context/auth.context'
 import Loader from '../../components/Loader/Loader'
 import PhotosService from '../../services/photos.service'
+import Toast from '../../components/Toast/Toast'
 import './UserPage.css'
 
 const UserPage = () => {
@@ -44,7 +45,7 @@ const UserPage = () => {
                                 )
                             })
                         }
-
+                        <Toast />
                     </div>
             }
         </>

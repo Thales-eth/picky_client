@@ -32,13 +32,7 @@ const AuthProviderWrapper = (props) => {
                     setIsLoading(false)
                 })
                 .catch(e => console.log(e))
-
         }
-
-        // else {
-        //     navigate('/login')
-        // }
-
     }
 
     const logoutUser = () => {

@@ -1,12 +1,12 @@
 import './PhotoPage.css'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useState, useContext } from 'react'
 import CommentsService from '../../services/comments.service'
 import PhotoService from '../../services/photos.service'
 import UsersService from '../../services/users.service'
 import { AuthContext } from '../../context/auth.context'
 import { MessageContext } from '../../context/userMessage.context'
-import { BsFillTrashFill } from 'react-icons/bs';
+import { BsFillTrashFill, BsEraserFill } from 'react-icons/bs';
 import { Form, Button } from 'react-bootstrap'
 import { AiOutlineHeart, AiFillHeart, AiFillEdit } from 'react-icons/ai'
 import EditModal from '../../components/Modal/Modal'
@@ -28,7 +28,8 @@ const PhotoPage = () => {
     const { getToken, user, isLoading } = useContext(AuthContext)
     const { photo_id } = useParams()
 
-    const { show, setShow, handleClose, handleShow } = useContext(MessageContext)
+    const { show, setShow, setShowMessage, handleClose, handleShow } = useContext(MessageContext)
+    const navigate = useNavigate()
 
     useEffect(() => {
         getCommentedPhoto()
@@ -136,6 +137,20 @@ const PhotoPage = () => {
             .catch(e => console.log(e))
     }
 
+    const deletePhoto = (id) => {
+        PhotoService
+            .deletePhoto(id)
+            .then(({ msg }) => {
+                setShowMessage({
+                    show: true,
+                    title: 'Congrats 😀',
+                    text: `${msg}`
+                })
+                navigate('/my-profile')
+            })
+            .catch(e => console.log(e))
+    }
+
     return (
         <>
             {
@@ -150,6 +165,7 @@ const PhotoPage = () => {
                                 :
                                 <AiFillHeart onClick={dislikePhoto} size="30px" color="red" style={{ cursor: "pointer" }} />
                         }
+                        <BsEraserFill onClick={() => deletePhoto(photo_id)} style={{ cursor: "pointer" }} size="30px" />
                         <p>Created At: {new Date(createdAt).toLocaleString()}</p>
                         <div className="comments">
                             {
