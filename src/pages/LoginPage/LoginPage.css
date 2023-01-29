@@ -1,0 +1,12 @@
+.LoginPage {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ErrorMessage {
+    background-color: rgb(218, 202, 202);
+    padding: 10px;
+    border-radius: 2px;
+}

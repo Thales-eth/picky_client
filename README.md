@@ -4,6 +4,7 @@
 | :--------------------------:|:---------------------:|
 | /                           |  Home page            | 
 | /feed                           |  Feed where user content is Shown            | 
+| /explorer                           |  Page where all platform photos are shown            | 
 | /friends/:user_id                 |  User Friends List     |
 | /photo/:photo_id                           |  Single Photo with Comments            | 
 | /post                           |  Form to Upload Photos to your account            | 
