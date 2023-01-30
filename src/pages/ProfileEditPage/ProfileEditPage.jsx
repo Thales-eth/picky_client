@@ -18,7 +18,7 @@ const ProfileEditPage = () => {
 
     const [canClick, setCanClick] = useState(false)
 
-    const { id, username, email, avatar } = user
+    const { username, email, avatar } = user
 
     const { setShowMessage } = useContext(MessageContext)
 

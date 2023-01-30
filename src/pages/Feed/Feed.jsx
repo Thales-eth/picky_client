@@ -60,7 +60,7 @@ const Feed = () => {
                                 <img style={{ width: "50px", height: "50px", borderRadius: "50%" }} src={avatar} alt="avatar" />
                                 <span>{username}</span>
                                 <img src={url} alt="" />
-                                <span>{Math.floor((Date.now() - new Date(createdAt).getTime()) / 1000 / 60)} minutes</span>
+                                <span> {Math.floor((Date.now() - new Date(createdAt).getTime()) / 1000 / 60)} minutes ago</span>
                                 {
                                     checkIfFavorite(_id) ?
                                         <AiFillHeart onClick={() => dislike(_id)} color='red' size="30px" style={{ cursor: "pointer" }} />

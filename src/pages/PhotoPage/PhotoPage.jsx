@@ -157,6 +157,7 @@ const PhotoPage = () => {
                 isLoading ? <Loader />
                     :
                     <div className='PhotoPage'>
+
                         <img style={{ width: "200px" }} src={url} alt="" />
                         <br />
                         {
@@ -208,8 +209,8 @@ const PhotoPage = () => {
                         </Form>
 
                         <EditModal show={show} handleClose={handleClose}
-                            handleShow={handleShow} description={editedComment?.description} handleEditSubmit={handleEditSubmit}
-                            handleDescriptionChange={handleDescriptionChange} />
+                            handleShow={handleShow} description={editedComment?.description} handleModalSubmit={handleEditSubmit}
+                            handleModalChange={handleDescriptionChange} title={"Edit your comment!"}>Description</EditModal>
                     </div>
             }
         </>

@@ -9,7 +9,6 @@ import ProfilePage from '../pages/ProfilePage/ProfilePage'
 import UserPage from '../pages/UserPage/UserPage'
 import LikesPage from '../pages/LikesPage/LikesPage'
 import ProfileEditPage from '../pages/ProfileEditPage/ProfileEditPage'
-import EditPhotoPage from '../pages/EditPhotoPage/EditPhotoPage'
 import RegisterPage from '../pages/RegisterPage/RegisterPage'
 import LoginPage from '../pages/LoginPage/LoginPage'
 import ErrorPage from '../pages/ErrorPage/ErrorPage'
@@ -27,7 +26,6 @@ const AppRoutes = () => {
             <Route path='/my-profile' element={<UserPage />}></Route>
             <Route path='/my-likes' element={<LikesPage />}></Route>
             <Route path='/my-profile/edit' element={<ProfileEditPage />}></Route>
-            <Route path='/edit-photo/:photo_id' element={<EditPhotoPage />}></Route>
             <Route path='/register' element={<RegisterPage />}></Route>
             <Route path='/login' element={<LoginPage />}></Route>
             <Route path='*' element={<ErrorPage />}></Route>

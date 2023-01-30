@@ -2,19 +2,19 @@ import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap'
 import Modal from 'react-bootstrap/Modal';
 
-const EditModal = ({ show, handleClose, description, handleDescriptionChange, handleEditSubmit }) => {
+const EditModal = ({ show, handleClose, description, handleModalChange, handleModalSubmit, children, title }) => {
     return (
         <>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Edit your comment</Modal.Title>
+                    <Modal.Title>{title}</Modal.Title>
                 </Modal.Header>
 
                 <Modal.Footer>
-                    <Form onSubmit={handleEditSubmit}>
+                    <Form onSubmit={handleModalSubmit}>
                         <Form.Group className="mb-3" controlId="description">
-                            <Form.Label>Description</Form.Label>
-                            <Form.Control type="text" value={description} onChange={handleDescriptionChange} name="description" required />
+                            <Form.Label>{children}</Form.Label>
+                            <Form.Control type="text" value={description} onChange={handleModalChange} name="description" required />
                         </Form.Group>
 
                         <Button variant="secondary" onClick={handleClose}>
