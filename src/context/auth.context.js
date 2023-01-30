@@ -24,6 +24,7 @@ const AuthProviderWrapper = (props) => {
 
         const token = localStorage.getItem('authToken')
 
+
         if (token) {
             UsersService
                 .getLoggedUser(token)
@@ -34,7 +35,11 @@ const AuthProviderWrapper = (props) => {
                 .catch(e => console.log(e))
         }
 
-        else {
+
+        // PODRÍA CHEQUEAR DIRECTAMENTE URL
+        else if (window.location.pathname !== '/'
+            || window.location.pathname !== '/register') {
+            console.log(window.location.pathname)
             navigate('/login')
         }
     }
