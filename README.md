@@ -2,7 +2,7 @@
 
 # Aplicación desplegada
 
-La aplicación desplegada se puede encontrar en el siguiente enlace: "https://picky-client.vercel.app/"
+La aplicación desplegada se puede encontrar en el siguiente enlace: "https://picky-client.vercel.app/". A nivel estético, la aplicación ha sido desarrollada desde una perspectiva mobile-first. 
 
 Si quiere correrse esta aplicación en local, será necesario crear un archivo .env en la raíz del proyecto y adjuntar la variable de entorno "REACT_APP_API_URL". Por defecto, nos servimos del valor "http://localhost:5005". El puerto 5005 es el elegido en este caso para levantar nuestro servicio (API). Este archivo .env se excluye de subida en nuestro archivo .gitignore.
 
