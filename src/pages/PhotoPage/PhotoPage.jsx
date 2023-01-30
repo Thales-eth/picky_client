@@ -156,29 +156,42 @@ const PhotoPage = () => {
             {
                 isLoading ? <Loader />
                     :
-                    <div className='PhotoPage'>
-
-                        <img style={{ width: "200px" }} src={url} alt="" />
+                    <div className='PhotoPage mt-3'>
+                        <div onDoubleClick={() => {
+                            !hasLikes ? likePhoto() : dislikePhoto()
+                        }} className="ImageCard">
+                            <img src={url} alt="" />
+                        </div>
                         <br />
-                        {
-                            !hasLikes ?
-                                <AiOutlineHeart onClick={likePhoto} size="30px" color="red" style={{ cursor: "pointer" }} />
-                                :
-                                <AiFillHeart onClick={dislikePhoto} size="30px" color="red" style={{ cursor: "pointer" }} />
-                        }
-                        <BsEraserFill onClick={() => deletePhoto(photo_id)} style={{ cursor: "pointer" }} size="30px" />
-                        <p>Created At: {new Date(createdAt).toLocaleString()}</p>
+                        <div className='PhotoDetails'>
+                            <div>
+                                {
+                                    !hasLikes ?
+                                        <AiOutlineHeart className='HeartLogo ms-3' onClick={likePhoto} size="30px" color="red" style={{ cursor: "pointer" }} />
+                                        :
+                                        <AiFillHeart className='HeartLogo ms-3' onClick={dislikePhoto} size="30px" color="red" style={{ cursor: "pointer" }} />
+                                }
+                                <BsEraserFill className='Eraser ms-2' onClick={() => deletePhoto(photo_id)} size="30px" />
+                            </div>
+                            <span className='me-2'>Created At: {new Date(createdAt).toLocaleString()}</span>
+                        </div>
+                        <hr />
                         <div className="comments">
                             {
                                 comments.map(({ _id, description, author: { username, avatar, _id: commentUser_id } }) => {
                                     return (
                                         <div key={_id} className="comment">
+                                            <span>{username}</span>
+                                            {
+                                                <a className='ms-2' href={user?._id === commentUser_id ? "/my-profile" : `/profile/${commentUser_id}`}><img style={{ width: "40px", height: "40px", borderRadius: "50%" }} src={avatar} alt="" /></a>
+                                            }
+                                            <br />
                                             <span>{description}</span>
                                             {
                                                 user?._id === commentUser_id &&
                                                 <>
-                                                    <BsFillTrashFill style={{ cursor: "pointer" }} onClick={() => deleteComment(_id)} />
-                                                    <AiFillEdit style={{ cursor: "pointer" }} onClick={() => {
+                                                    <BsFillTrashFill className='ms-1' color='brown' size={20} style={{ cursor: "pointer" }} onClick={() => deleteComment(_id)} />
+                                                    <AiFillEdit size={20} style={{ cursor: "pointer" }} onClick={() => {
                                                         setShow(true)
                                                         CommentsService
                                                             .getSingleComment(_id)
@@ -189,10 +202,6 @@ const PhotoPage = () => {
                                                     }} />
                                                 </>
 
-                                            }
-                                            <span>{username}</span>
-                                            {
-                                                <a href={user?._id === commentUser_id ? "/my-profile" : `/profile/${commentUser_id}`}><img style={{ width: "40px", height: "40px", borderRadius: "50%" }} src={avatar} alt="" /></a>
                                             }
                                             <hr />
                                         </div>
@@ -205,7 +214,9 @@ const PhotoPage = () => {
                             <Form.Group className="mb-3" controlId="description">
                                 <Form.Control type="text" value={description} onChange={handleInputChange} name='description' />
                             </Form.Group>
-                            <Button variant="dark" type="submit">Post comment</Button>
+                            <div className="d-grid">
+                                <Button className='mb-3' variant="dark" type="submit">Post comment</Button>
+                            </div>
                         </Form>
 
                         <EditModal show={show} handleClose={handleClose}

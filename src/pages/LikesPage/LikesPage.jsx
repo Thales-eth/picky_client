@@ -1,10 +1,9 @@
 import './LikesPage.css'
 import photosService from '../../services/photos.service'
-import GridCard from '../../components/Card/Card'
 import Loader from '../../components/Loader/Loader'
 import { useEffect, useState, useContext } from 'react'
-import { Container } from 'react-bootstrap'
 import { AuthContext } from '../../context/auth.context'
+import StandardImageList from '../../components/ImageGrid/ImageGrid'
 
 const LikesPage = () => {
 
@@ -29,17 +28,7 @@ const LikesPage = () => {
                     ?
                     <Loader />
                     :
-                    < div className='LikesPage' >
-                        <Container className='ExplorerPage'>
-                            {
-                                likedPhotos.map(({ url, _id }) => {
-                                    return (
-                                        <a key={_id} href={`/photo/${_id}`}> <GridCard url={url} /></a>
-                                    )
-                                })
-                            }
-                        </Container >
-                    </div >
+                    <StandardImageList items={likedPhotos} cols={3} />
             }
         </>
     )

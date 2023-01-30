@@ -1,3 +1,4 @@
+import './Modal.css'
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap'
 import Modal from 'react-bootstrap/Modal';
@@ -17,10 +18,10 @@ const EditModal = ({ show, handleClose, description, handleModalChange, handleMo
                             <Form.Control type="text" value={description} onChange={handleModalChange} name="description" required />
                         </Form.Group>
 
-                        <Button variant="secondary" onClick={handleClose}>
+                        <Button variant="danger" onClick={handleClose}>
                             Close
                         </Button>
-                        <Button variant="primary" type="submit" onClick={handleClose}>
+                        <Button className='ms-3' variant="light" type="submit" onClick={handleClose}>
                             Save Changes
                         </Button>
                     </Form>

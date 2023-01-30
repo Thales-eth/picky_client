@@ -10,7 +10,7 @@ import './UserPage.css'
 const UserPage = () => {
 
     const { user, isLoading } = useContext(AuthContext)
-    const [loggedUser, setLoggedUser] = useState({ _id: "", avatar: "", username: "", email: "" })
+    const [loggedUser, setLoggedUser] = useState({ _id: "", avatar: "", username: "", email: "", friends: [], favoritePhotos: [] })
 
     const [personalPhotos, setPersonalPhotos] = useState([])
 
@@ -41,8 +41,8 @@ const UserPage = () => {
 
                         <div className="UserButtons mt-3">
                             <a className='editBtn btn btn-light' href="/my-profile/edit">Edit Profile</a>
-                            <a className='ms-1 btn btn-light' href={`/friends/${user_id}`}>Friends ({user?.friends.length})</a>
-                            <a className='ms-1 btn btn-danger' href="/my-likes">Favorite Photos ({user?.favoritePhotos.length})</a>
+                            <a className='ms-1 btn btn-light' href={`/friends/${user_id}`}>Friends ({loggedUser?.friends.length})</a>
+                            <a className='ms-1 btn btn-danger' href="/my-likes">Favorite Photos ({loggedUser?.favoritePhotos.length})</a>
                         </div>
 
                         <hr />

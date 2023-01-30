@@ -4,14 +4,16 @@ import { useEffect, useState, useContext } from 'react'
 import { AuthContext } from '../../context/auth.context'
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 import AvatarImage from '../../components/Avatar/Avatar'
-import UsersService from '../../services/users.service'
+import getHumanTime from '../../utils/getHumanTime'
+import Loader from '../../components/Loader/Loader'
 
 const Feed = () => {
 
     const [friendsPhotos, setFriendsPhotos] = useState([])
     const [token, setToken] = useState("")
+    const [showHeart, setShowHeart] = useState(false);
 
-    const { getToken, user, authenticateUser } = useContext(AuthContext)
+    const { getToken, isLoading, user, authenticateUser } = useContext(AuthContext)
 
     useEffect(() => {
         const token = getToken()
@@ -51,30 +53,76 @@ const Feed = () => {
         return user.favoritePhotos.includes(id)
     }
 
+    useEffect(() => {
+        console.log(showHeart)
+    }, [showHeart])
+
+    const triggerLike = (id) => {
+        likePhoto(id)
+        setShowHeart(true)
+    }
+
+    const triggerDislike = (id) => {
+        dislike(id)
+        setShowHeart(false)
+    }
+
     return (
-        <div className='FeedPage'>
+        <>
             {
-                friendsPhotos.map(({ _id, url, createdAt, author: { avatar, username } }) => {
-                    return (
-                        <a key={_id} href={`/photo/${_id}`}>
-                            <div>
-                                <AvatarImage src={avatar} />
-                                <span>{username}</span>
-                                <img src={url} alt="" />
-                                <span> {Math.floor((Date.now() - new Date(createdAt).getTime()) / 1000 / 60)} minutes ago</span>
-                                {
-                                    checkIfFavorite(_id) ?
-                                        <AiFillHeart onClick={() => dislike(_id)} color='red' size="30px" style={{ cursor: "pointer" }} />
-                                        :
-                                        <AiOutlineHeart onClick={() => likePhoto(_id)} color='red' size="30px" style={{ cursor: "pointer" }} />
-                                }
-                            </div>
-                            <hr />
-                        </a>
-                    )
-                })
+
+                isLoading ? <Loader />
+                    :
+                    <div className='FeedPage mt-5'>
+                        {
+                            friendsPhotos.map(({ _id, url, createdAt, author: { avatar, username, _id: author_id } }) => {
+                                return (
+                                    <div key={_id}>
+                                        <div>
+                                            <div className="InfoBlock mb-3">
+                                                <a href={`/profile/${author_id}`}>
+                                                    <AvatarImage src={avatar} />
+                                                </a>
+                                                <a href={`/profile/${author_id}`}>
+                                                    <span className='ms-3'>{username}</span>
+                                                </a>
+                                            </div>
+
+                                            <div className="ImageCard">
+                                                <img onDoubleClick={() => {
+                                                    checkIfFavorite(_id)
+                                                        ?
+                                                        triggerDislike(_id)
+                                                        :
+                                                        triggerLike(_id)
+
+                                                }} src={url} alt="image" />
+                                            </div>
+
+                                            <div className='PhotoDetails mt-3'>
+                                                <div>
+                                                    <span> {getHumanTime(Math.floor((Date.now() - new Date(createdAt).getTime()) / 1000 / 60))} minutes ago</span>
+                                                    {
+                                                        checkIfFavorite(_id) ?
+                                                            <AiFillHeart className='HeartLogo ms-3' onClick={() => dislike(_id)} color='red' size="30px" style={{ cursor: "pointer" }} />
+                                                            :
+                                                            <AiOutlineHeart className='HeartLogo ms-3' onClick={() => likePhoto(_id)} color='red' size="30px" style={{ cursor: "pointer" }} />
+                                                    }
+                                                </div>
+                                                <a key={_id} href={`/photo/${_id}`}>
+                                                    <span className='btn btn-light me-3'>View Details</span>
+                                                </a>
+
+                                            </div>
+                                        </div>
+                                        <hr />
+                                    </div>
+                                )
+                            })
+                        }
+                    </div >
             }
-        </div>
+        </>
     )
 }
 

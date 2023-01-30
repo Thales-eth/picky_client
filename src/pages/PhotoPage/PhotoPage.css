@@ -1,0 +1,8 @@
+.Eraser {
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.Eraser:hover {
+    transform: scale(1.2);
+}

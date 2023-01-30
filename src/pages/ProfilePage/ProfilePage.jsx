@@ -7,6 +7,7 @@ import PhotosService from '../../services/photos.service'
 import usersService from '../../services/users.service'
 import Loader from '../../components/Loader/Loader'
 import AvatarImage from '../../components/Avatar/Avatar'
+import StandardImageList from '../../components/ImageGrid/ImageGrid'
 
 const ProfilePage = () => {
 
@@ -39,18 +40,22 @@ const ProfilePage = () => {
                 isLoading ? <Loader />
                     :
                     <div className='ProfilePage'>
-                        <AvatarImage src={avatar} />
-                        <h1>Username: {username}</h1>
-                        <h1>📧: {email}</h1>
-                        <a className='ml-5 btn' href={`/friends/${user_id}`}>Friends ({profileUser?.friends.length})</a>
+                        <div className="basicInfo mt-5">
+                            <AvatarImage src={avatar} />
+                            <h1 className='mt-3'>Username: {username}</h1>
+                            <h1>📧: {email}</h1>
+                            <a className='mt-3 btn btn-light' href={`/friends/${user_id}`}>Friends ({profileUser?.friends.length})</a>
+                        </div>
+                        <hr />
                         <p>Personal photos:</p>
-                        {
+                        <StandardImageList items={personalPhotos} cols={3} />
+                        {/* {
                             personalPhotos.map(({ url, _id }) => {
                                 return (
                                     <a href={`/photo/${_id}`} key={_id}><img style={{ width: "200px" }} src={url} alt="" /></a>
                                 )
                             })
-                        }
+                        } */}
                         <Toast />
                     </div>
             }

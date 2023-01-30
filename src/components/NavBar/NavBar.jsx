@@ -9,6 +9,7 @@ import Avatar from '../Avatar/Avatar';
 import PhotoService from '../../services/photos.service';
 import UploadModal from '../UploadModal/UploadModal';
 import Loader from '../Loader/Loader'
+import { AiOutlineCloudUpload } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom';
 
 function NavBar() {
@@ -29,6 +30,7 @@ function NavBar() {
 
     useEffect(() => {
         setCanClick(true)
+        console.log(canClick)
     }, [data])
 
     const logout = () => {
@@ -72,13 +74,14 @@ function NavBar() {
                         <div className='navLogo'>
                             <span>写真</span>
                         </div>
-                        {/* <img src={pickyLogo} style={{ width: "30px" }} alt="pickylogo" /> */}
                     </Navbar.Brand>
                     <Nav className="me-auto">
                         <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="/feed">Feed</Nav.Link>
-                        <Nav.Link onClick={() => updateModal()}>Post</Nav.Link>
                         <Nav.Link href="/explorer">Explore</Nav.Link>
+                        <Nav.Link onClick={() => updateModal()}>
+                            <AiOutlineCloudUpload size={30} />
+                        </Nav.Link>
                         <NavDropdown title="User" id="basic-nav-dropdown">
                             <NavDropdown.Item href="/login">Login</NavDropdown.Item>
                             <NavDropdown.Item href="/register">
@@ -105,8 +108,9 @@ function NavBar() {
             </Navbar>
 
             <UploadModal
+                canClick={canClick}
                 show={show} handleClose={handleClose}
-                handleShow={handleShow} canClick={canClick}
+                handleShow={handleShow}
                 handleFileInput={handleFileInput}
                 handleModalChange={handleUrlChange}
                 title={"Let's get Picky!"}

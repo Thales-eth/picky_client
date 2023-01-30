@@ -1,3 +1,4 @@
+import './UploadModal.css'
 import React from 'react'
 import { Form, Button } from 'react-bootstrap'
 import Modal from 'react-bootstrap/Modal';
@@ -5,7 +6,7 @@ import Modal from 'react-bootstrap/Modal';
 const UploadModal = ({ show, handleClose, handleFileInput, handleModalChange, title, canClick, setCanClick }) => {
     return (
         <>
-            <Modal show={show} onHide={() => {
+            <Modal className='UpdateModal' show={show} onHide={() => {
                 handleClose()
                 setCanClick(false)
             }}>
@@ -26,12 +27,11 @@ const UploadModal = ({ show, handleClose, handleFileInput, handleModalChange, ti
                         }}>
                             Close
                         </Button>
-                        {
-                            canClick &&
-                            <Button className='ms-1' variant="primary" type="submit" onClick={handleClose}>
-                                Save Changes
-                            </Button>
-                        }
+
+                        <Button className='ms-1' disabled={!canClick} variant="light" type="submit" onClick={handleClose}>
+                            Save Changes
+                        </Button>
+
                     </Form>
                 </Modal.Footer>
             </Modal>
