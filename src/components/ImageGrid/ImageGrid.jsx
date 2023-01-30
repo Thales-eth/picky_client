@@ -4,7 +4,7 @@ import './ImageGrid.css'
 
 const StandardImageList = ({ items, cols }) => {
     return (
-        <ImageList className='imageList mt-5' sx={{ width: 500, height: 500 }} cols={cols} rowHeight={164}>
+        <ImageList className='imageList mt-5' sx={{ width: "100%", height: "100%" }} cols={cols} rowHeight={164}>
             {items.map(({ url, _id }) => (
                 <a key={_id} href={`/photo/${_id}`}>
                     <ImageListItem >
