@@ -72,7 +72,6 @@ function NavBar() {
                         </div>
                     </Navbar.Brand>
                     <Nav className="me-auto">
-                        <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="/feed">Feed</Nav.Link>
                         <Nav.Link href="/explorer">Explore</Nav.Link>
                         <Nav.Link onClick={() => updateModal()}>
