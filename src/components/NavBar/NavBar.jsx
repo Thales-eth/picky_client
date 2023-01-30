@@ -74,9 +74,12 @@ function NavBar() {
                     <Nav className="me-auto">
                         <Nav.Link href="/feed">Feed</Nav.Link>
                         <Nav.Link href="/explorer">Explore</Nav.Link>
-                        <Nav.Link onClick={() => updateModal()}>
-                            <AiOutlineCloudUpload size={30} />
-                        </Nav.Link>
+                        {
+                            user &&
+                            <Nav.Link onClick={() => updateModal()}>
+                                <AiOutlineCloudUpload size={30} />
+                            </Nav.Link>
+                        }
                         <NavDropdown title="User" id="basic-nav-dropdown">
                             <NavDropdown.Item href="/login">Login</NavDropdown.Item>
                             <NavDropdown.Item href="/register">
