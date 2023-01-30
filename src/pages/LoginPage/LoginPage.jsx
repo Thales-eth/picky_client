@@ -20,10 +20,6 @@ const LoginPage = () => {
     const [error, setError] = useState({ err: "" })
     const { err } = error
 
-    useEffect(() => {
-        console.log(error)
-    }, [error])
-
     const navigate = useNavigate()
 
     const handleSubmit = (e) => {
@@ -42,7 +38,6 @@ const LoginPage = () => {
                 navigate('/my-profile')
             })
             .catch(({ response: { data } }) => {
-                console.log("EL DATA!!!!!", data)
                 setError(data)
             })
     }

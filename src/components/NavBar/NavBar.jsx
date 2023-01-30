@@ -30,7 +30,6 @@ function NavBar() {
 
     useEffect(() => {
         setCanClick(true)
-        console.log(canClick)
     }, [data])
 
     const logout = () => {
@@ -41,12 +40,9 @@ function NavBar() {
     const handleFileInput = (e) => {
         e.preventDefault()
 
-        console.log("ENTRO????")
-
         PhotoService
             .uploadPhoto(data, token)
             .then(({ _id }) => {
-                console.log("LMAO")
                 navigate(`/photo/${_id}`)
             })
             .catch(e => console.log(e))

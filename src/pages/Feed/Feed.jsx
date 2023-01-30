@@ -31,10 +31,6 @@ const Feed = () => {
             .catch(e => console.log(e))
     }
 
-    useEffect(() => {
-        console.log(user)
-    }, [user])
-
     const likePhoto = (id) => {
         UserService
             .likePhoto(id, token)

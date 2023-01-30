@@ -27,10 +27,6 @@ const ProfileEditPage = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        console.log("EL NUEVO UZER ==>", user)
-    }, [user])
-
-    useEffect(() => {
         const token = getToken()
 
         UserService
@@ -47,7 +43,6 @@ const ProfileEditPage = () => {
         UserService
             .editUser(user?._id, user)
             .then((user) => {
-                console.log("QUIÉN HAY AQUÍ", user)
                 setShowMessage({
                     show: true,
                     title: "Congratulations ✔",

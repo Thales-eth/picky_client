@@ -25,7 +25,6 @@ const FriendsPage = () => {
         usersService
             .getFriends(user_id)
             .then(friends => {
-                console.log("LOS FRIENDS", friends)
                 setFriends(friends)
                 setNewFriends(friends)
             })

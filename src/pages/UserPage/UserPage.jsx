@@ -17,8 +17,6 @@ const UserPage = () => {
     const { _id: user_id, avatar, username, email } = loggedUser
 
     useEffect(() => {
-        console.log(user)
-
         user && setLoggedUser(user)
 
         user && PhotosService

@@ -52,16 +52,11 @@ const RegisterPage = () => {
         PhotoService
             .uploadAvatar(uploadData)
             .then(cloudUrl => {
-                console.log("LA RESPUESTA ===>", cloudUrl)
                 setUser({ ...user, avatar: cloudUrl })
                 setCanClick(true)
             })
             .catch(e => console.log(e))
     }
-
-    useEffect(() => {
-        console.log("EL USER AHORA", user)
-    }, [user])
 
     return (
         <div className='RegisterPage'>

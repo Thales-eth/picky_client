@@ -64,13 +64,10 @@ const PhotoPage = () => {
     }
 
     const likePhoto = () => {
-        console.log(token)
-        console.log('LIKEEEEE')
         UsersService
             .likePhoto(photo_id, token)
             .then((user) => {
                 setHasLikes(true)
-                console.log("EL USER QUEDA ASÍ!!!", user)
             })
             .catch(e => console.log(e))
     }
@@ -80,7 +77,6 @@ const PhotoPage = () => {
             .dislikePhoto(photo_id, token)
             .then((user) => {
                 setHasLikes(false)
-                console.log("EL USER QUEDA ASÍ!!!", user)
             })
             .catch(e => console.log(e))
     }
