@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import usersService from '../../services/users.service'
 import { AuthContext } from '../../context/auth.context'
 import Loader from '../../components/Loader/Loader'
+import AvatarImage from '../../components/Avatar/Avatar'
 import './FriendsPage.css'
 
 const FriendsPage = () => {
@@ -56,23 +57,27 @@ const FriendsPage = () => {
         <>
             {
                 !isLoading ?
-                    < div className='friendsPage' >
+                    < div className='friendsPage mt-5' >
                         {
                             friends.map(({ _id, avatar, username }) => {
                                 return (
-                                    <div key={_id}>
-                                        <a href={`/profile/${_id}`} >
-                                            <p>{username}</p>
-                                            <img style={{ width: "50px", height: "50px", borderRadius: "50%" }} src={avatar} alt="" />
-                                        </a>
-                                        {
-                                            checkIfFriends(_id) ?
-                                                <a onClick={() => unfollowUser(_id)} className="btn btn-dark">Unfollow</a>
-                                                :
-                                                <a onClick={() => followUser(_id)} className="btn btn-primary">Follow</a>
-                                        }
-                                        <hr />
-                                    </div>
+                                    <>
+                                        <div className='FriendGrid' key={_id}>
+                                            <a href={`/profile/${_id}`} >
+                                                <div className='InfoBlock'>
+                                                    <AvatarImage src={avatar} />
+                                                    <p className='ms-3'>{username}</p>
+                                                </div>
+                                            </a>
+                                            {
+                                                checkIfFriends(_id) ?
+                                                    <a onClick={() => unfollowUser(_id)} className="UnfollowBtn btn btn-light me-3">Unfollow</a>
+                                                    :
+                                                    <a onClick={() => followUser(_id)} className="FollowBtn btn btn-primary me-3">Follow</a>
+                                            }
+                                        </div>
+                                        < hr />
+                                    </>
                                 )
                             })
                         }

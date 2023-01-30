@@ -80,11 +80,11 @@ const ProfileEditPage = () => {
     }
 
     return (
-        <div>
+        <div className='mt-5'>
             <Container>
                 <Row>
                     <Col md={{ span: 6, offset: 3 }}>
-                        <h1>Start Sharing</h1>
+                        <h1>Edit Profile</h1>
                         <hr />
                         <Form onSubmit={handleSubmit}>
 
@@ -104,11 +104,7 @@ const ProfileEditPage = () => {
                             </Form.Group>
 
                             <div className="d-grid">
-                                {
-                                    canClick
-                                    &&
-                                    <Button variant="dark" type="submit">Edit Profile</Button>
-                                }
+                                <Button className='SubmitBtn mt-3' disabled={!canClick} variant="dark" type="submit">Edit Profile</Button>
                             </div>
 
                         </Form>

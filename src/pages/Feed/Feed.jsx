@@ -3,6 +3,7 @@ import UserService from '../../services/users.service'
 import { useEffect, useState, useContext } from 'react'
 import { AuthContext } from '../../context/auth.context'
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
+import AvatarImage from '../../components/Avatar/Avatar'
 import UsersService from '../../services/users.service'
 
 const Feed = () => {
@@ -57,7 +58,7 @@ const Feed = () => {
                     return (
                         <a key={_id} href={`/photo/${_id}`}>
                             <div>
-                                <img style={{ width: "50px", height: "50px", borderRadius: "50%" }} src={avatar} alt="avatar" />
+                                <AvatarImage src={avatar} />
                                 <span>{username}</span>
                                 <img src={url} alt="" />
                                 <span> {Math.floor((Date.now() - new Date(createdAt).getTime()) / 1000 / 60)} minutes ago</span>

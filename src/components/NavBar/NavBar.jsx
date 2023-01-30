@@ -1,9 +1,11 @@
 import './NavBar.css'
+import pickyLogo from './assets/pickylogo.png'
 import Container from 'react-bootstrap/Container';
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/auth.context';
 import { MessageContext } from '../../context/userMessage.context';
+import Avatar from '../Avatar/Avatar';
 import PhotoService from '../../services/photos.service';
 import UploadModal from '../UploadModal/UploadModal';
 import Loader from '../Loader/Loader'
@@ -64,9 +66,14 @@ function NavBar() {
 
     return (
         <>
-            <Navbar className='NavBar' bg="dark" variant="dark">
-                <Container>
-                    <Navbar.Brand href="/">Picky_</Navbar.Brand>
+            <Navbar className='NavBar' variant="dark">
+                <Container className='NavContainer'>
+                    <Navbar.Brand href="/">
+                        <div className='navLogo'>
+                            <span>写真</span>
+                        </div>
+                        {/* <img src={pickyLogo} style={{ width: "30px" }} alt="pickylogo" /> */}
+                    </Navbar.Brand>
                     <Nav className="me-auto">
                         <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="/feed">Feed</Nav.Link>
@@ -87,7 +94,7 @@ function NavBar() {
                                 {
                                     !isLoading
                                         ?
-                                        <img className='avatar' style={{ width: "30px", borderRadius: "50%" }} src={user?.avatar} alt="avatar" />
+                                        <Avatar src={user?.avatar} />
                                         :
                                         <Loader />
                                 }

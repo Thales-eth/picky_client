@@ -6,6 +6,7 @@ import { useEffect, useContext, useState } from 'react'
 import PhotosService from '../../services/photos.service'
 import usersService from '../../services/users.service'
 import Loader from '../../components/Loader/Loader'
+import AvatarImage from '../../components/Avatar/Avatar'
 
 const ProfilePage = () => {
 
@@ -38,9 +39,9 @@ const ProfilePage = () => {
                 isLoading ? <Loader />
                     :
                     <div className='ProfilePage'>
-                        <img style={{ width: "50px", height: "50px", borderRadius: "50%", margin: "0 auto", display: "block" }} src={avatar} alt="" />
+                        <AvatarImage src={avatar} />
                         <h1>Username: {username}</h1>
-                        <h1>Email: {email}</h1>
+                        <h1>📧: {email}</h1>
                         <a className='ml-5 btn' href={`/friends/${user_id}`}>Friends ({profileUser?.friends.length})</a>
                         <p>Personal photos:</p>
                         {

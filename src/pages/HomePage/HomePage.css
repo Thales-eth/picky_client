@@ -1,6 +1,26 @@
 .HomePage {
     height: 100vh;
-    background: url('./assets/neal-kharawala-XXA8PTuLD1Y-unsplash.jpg') no-repeat;
+    background: url('./assets/tokyo.jpg') no-repeat;
     background-size: cover;
     background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.HomeBtn {
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    padding: 15px;
+    border-radius: 2px;
+    border: 1px solid white;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+.HomeBtn:hover {
+    background-color: white;
+    transform: scale(1.1);
+    color: black;
 }

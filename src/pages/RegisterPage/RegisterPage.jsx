@@ -94,11 +94,10 @@ const RegisterPage = () => {
                             </Form.Group>
 
                             <div className="d-grid">
-                                {
-                                    canClick
-                                    &&
-                                    <Button variant="dark" type="submit">Sign up</Button>
-                                }
+
+                                <div className="d-grid">
+                                    <Button className='SubmitBtn mt-3' disabled={!canClick} variant="dark" type="submit">Register</Button>
+                                </div>
                             </div>
 
                         </Form>

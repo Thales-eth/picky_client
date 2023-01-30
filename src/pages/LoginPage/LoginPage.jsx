@@ -73,12 +73,15 @@ const LoginPage = () => {
                             </Form.Group>
 
                             <div className="d-grid">
-                                <Button variant="dark" type="submit">Login</Button>
+                                <Button className='SubmitBtn mt-3' variant="dark" type="submit">Login</Button>
                             </div>
 
-                            <p className='ErrorMessage' style={{ position: 'fixed', bottom: 30, right: 30 }}>
-                                {err}
-                            </p>
+                            {
+                                err &&
+                                <p className='ErrorMessage' style={{ position: 'fixed', bottom: 30, right: 30 }}>
+                                    {err}
+                                </p>
+                            }
                         </Form>
                     </Col>
                 </Row>

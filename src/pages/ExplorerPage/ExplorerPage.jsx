@@ -1,8 +1,7 @@
 import './ExplorerPage.css'
 import photosService from '../../services/photos.service'
-import GridCard from '../../components/Card/Card'
+import StandardImageList from '../../components/ImageGrid/ImageGrid'
 import { useEffect, useState } from 'react'
-import { Container } from 'react-bootstrap'
 
 const ExplorerPage = () => {
 
@@ -16,15 +15,7 @@ const ExplorerPage = () => {
     }, [])
 
     return (
-        <Container className='ExplorerPage'>
-            {
-                photos.map(({ url, _id }) => {
-                    return (
-                        <a key={_id} href={`/photo/${_id}`}> <GridCard url={url} /></a>
-                    )
-                })
-            }
-        </Container >
+        <StandardImageList items={photos} cols={3} />
     )
 }
 

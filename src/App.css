@@ -2,6 +2,17 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
+  color: white;
+  background-color: black;
+  height: 100vh;
+}
+
+p {
+  margin: 0;
+}
+
+img {
+  width: 100%;
 }
 
 h1 {
@@ -11,9 +22,33 @@ h1 {
 
 a {
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 a:hover {
-  color: black;
+  color: rgb(174, 174, 174);
+}
+
+body::-webkit-scrollbar {
+  width: 5px;
+  background-color: black;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 10px;
+}
+
+.imageList::-webkit-scrollbar {
+  width: 10px;
+  background-color: black;
+}
+
+.imageList::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 10px;
+}
+
+.imageList::-webkit-scrollbar-thumb:hover {
+  background-color: #555555;
 }

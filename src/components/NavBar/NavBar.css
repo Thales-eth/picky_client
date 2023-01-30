@@ -1,0 +1,19 @@
+.navLogo {
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.NavBar {
+    background-color: black;
+    color: white;
+}
+
+.navbar-nav {
+    align-items: center;
+    text-transform: uppercase;
+}

@@ -1,0 +1,20 @@
+.FriendGrid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.UnfollowBtn {
+    height: 40px;
+    width: 100px;
+}
+
+.FollowBtn {
+    height: 40px;
+    width: 100px;
+}
+
+.InfoBlock {
+    display: flex;
+    align-items: center;
+}

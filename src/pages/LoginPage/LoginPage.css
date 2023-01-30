@@ -10,3 +10,7 @@
     padding: 10px;
     border-radius: 2px;
 }
+
+.SubmitBtn {
+    text-transform: uppercase;
+}
