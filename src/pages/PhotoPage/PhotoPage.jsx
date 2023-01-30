@@ -1,14 +1,14 @@
 import './PhotoPage.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useState, useContext } from 'react'
-import CommentsService from '../../services/comments.service'
-import PhotoService from '../../services/photos.service'
-import UsersService from '../../services/users.service'
 import { AuthContext } from '../../context/auth.context'
 import { MessageContext } from '../../context/userMessage.context'
 import { BsFillTrashFill, BsEraserFill } from 'react-icons/bs';
 import { Form, Button } from 'react-bootstrap'
 import { AiOutlineHeart, AiFillHeart, AiFillEdit } from 'react-icons/ai'
+import CommentsService from '../../services/comments.service'
+import PhotoService from '../../services/photos.service'
+import UsersService from '../../services/users.service'
 import EditModal from '../../components/Modal/Modal'
 import Loader from '../../components/Loader/Loader'
 

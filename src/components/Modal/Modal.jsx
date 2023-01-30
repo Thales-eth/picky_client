@@ -1,6 +1,6 @@
 import './Modal.css'
-import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap'
+import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 
 const EditModal = ({ show, handleClose, description, handleModalChange, handleModalSubmit, children, title }) => {

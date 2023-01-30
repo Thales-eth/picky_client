@@ -1,6 +1,6 @@
+import './ImageGrid.css'
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
-import './ImageGrid.css'
 
 const StandardImageList = ({ items, cols }) => {
     return (

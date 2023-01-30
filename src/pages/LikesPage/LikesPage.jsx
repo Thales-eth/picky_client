@@ -1,8 +1,8 @@
 import './LikesPage.css'
-import photosService from '../../services/photos.service'
-import Loader from '../../components/Loader/Loader'
 import { useEffect, useState, useContext } from 'react'
 import { AuthContext } from '../../context/auth.context'
+import Loader from '../../components/Loader/Loader'
+import photosService from '../../services/photos.service'
 import StandardImageList from '../../components/ImageGrid/ImageGrid'
 
 const LikesPage = () => {

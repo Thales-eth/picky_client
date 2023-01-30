@@ -1,7 +1,7 @@
+import './Toast.css'
 import { useContext } from 'react';
 import { MessageContext } from '../../context/userMessage.context';
 import Toast from 'react-bootstrap/Toast'
-import './Toast.css'
 
 const UserMessage = () => {
 

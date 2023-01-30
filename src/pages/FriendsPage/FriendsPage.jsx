@@ -1,10 +1,10 @@
+import './FriendsPage.css'
 import { useEffect, useState, useContext } from 'react'
 import { useParams } from 'react-router-dom'
-import usersService from '../../services/users.service'
 import { AuthContext } from '../../context/auth.context'
+import usersService from '../../services/users.service'
 import Loader from '../../components/Loader/Loader'
 import AvatarImage from '../../components/Avatar/Avatar'
-import './FriendsPage.css'
 
 const FriendsPage = () => {
 

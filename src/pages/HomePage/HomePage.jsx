@@ -1,7 +1,6 @@
 import './HomePage.css'
-import CommentsService from '../../services/comments.service'
 import { useEffect } from 'react'
-
+import CommentsService from '../../services/comments.service'
 
 const HomePage = () => {
 
