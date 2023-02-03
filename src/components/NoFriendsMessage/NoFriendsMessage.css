@@ -1,0 +1,19 @@
+.noFriends {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.noFriends p {
+    font-size: 2em;
+}
+
+.noFriends a {
+    color: #e448af;
+    transition: 0.3s;
+}
+
+.noFriends a:hover {
+    color: #e16bba;
+}

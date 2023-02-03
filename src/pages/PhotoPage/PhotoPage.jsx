@@ -11,11 +11,12 @@ import PhotoService from '../../services/photos.service'
 import UsersService from '../../services/users.service'
 import EditModal from '../../components/Modal/Modal'
 import Loader from '../../components/Loader/Loader'
+import Avatar from '../../components/Avatar/Avatar'
 
 const PhotoPage = () => {
 
-    const [photo, setPhoto] = useState({ _id: "", url: "", comments: [], createdAt: "" })
-    const { _id, url, comments, createdAt } = photo
+    const [photo, setPhoto] = useState({ _id: "", url: "", comments: [], createdAt: "", author: {} })
+    const { _id, url, comments, createdAt, author: { username, avatar, _id: author_id } } = photo
 
     const [token, setToken] = useState("")
     const [hasLikes, setHasLikes] = useState(false)
@@ -152,7 +153,17 @@ const PhotoPage = () => {
             {
                 isLoading ? <Loader />
                     :
-                    <div className='PhotoPage mt-3'>
+                    <div className='PhotoPage mt-5'>
+
+                        <div className="InfoBlock mb-3">
+                            <a href={`/profile/${author_id}`}>
+                                <Avatar src={avatar} />
+                            </a>
+                            <a href={`/profile/${author_id}`}>
+                                <span className='ms-3'>{username}</span>
+                            </a>
+                        </div>
+
                         <div onDoubleClick={() => {
                             !hasLikes ? likePhoto() : dislikePhoto()
                         }} className="ImageCard">
@@ -176,29 +187,37 @@ const PhotoPage = () => {
                             {
                                 comments.map(({ _id, description, author: { username, avatar, _id: commentUser_id } }) => {
                                     return (
-                                        <div key={_id} className="comment">
-                                            <span>{username}</span>
-                                            {
-                                                <a className='ms-2' href={user?._id === commentUser_id ? "/my-profile" : `/profile/${commentUser_id}`}><img style={{ width: "40px", height: "40px", borderRadius: "50%" }} src={avatar} alt="" /></a>
-                                            }
-                                            <br />
-                                            <span>{description}</span>
-                                            {
-                                                user?._id === commentUser_id &&
-                                                <>
-                                                    <BsFillTrashFill className='ms-1' color='brown' size={20} style={{ cursor: "pointer" }} onClick={() => deleteComment(_id)} />
-                                                    <AiFillEdit size={20} style={{ cursor: "pointer" }} onClick={() => {
-                                                        setShow(true)
-                                                        CommentsService
-                                                            .getSingleComment(_id)
-                                                            .then(comment => {
-                                                                setEditedComment(comment)
-                                                            })
-                                                            .catch(e => console.log(e))
-                                                    }} />
-                                                </>
+                                        <div key={_id}>
+                                            <div className="comment">
+                                                <div className='commentUser mb-2'>
+                                                    {
+                                                        <a href={user?._id === commentUser_id ? "/my-profile" : `/profile/${commentUser_id}`}>
+                                                            <Avatar src={avatar} />
+                                                        </a>
+                                                    }
+                                                    <span className='ms-2'>{username}</span>
+                                                </div>
+                                                {/* <br /> */}
+                                                <div className='userComment'>
+                                                    <span>{description}</span>
+                                                    {
+                                                        user?._id === commentUser_id &&
+                                                        <div>
+                                                            <BsFillTrashFill className='ms-1' color='brown' size={20} style={{ cursor: "pointer" }} onClick={() => deleteComment(_id)} />
+                                                            <AiFillEdit size={20} style={{ cursor: "pointer" }} onClick={() => {
+                                                                setShow(true)
+                                                                CommentsService
+                                                                    .getSingleComment(_id)
+                                                                    .then(comment => {
+                                                                        setEditedComment(comment)
+                                                                    })
+                                                                    .catch(e => console.log(e))
+                                                            }} />
+                                                        </div>
 
-                                            }
+                                                    }
+                                                </div>
+                                            </div>
                                             <hr />
                                         </div>
                                     )
@@ -218,7 +237,7 @@ const PhotoPage = () => {
                         <EditModal show={show} handleClose={handleClose}
                             handleShow={handleShow} description={editedComment?.description} handleModalSubmit={handleEditSubmit}
                             handleModalChange={handleDescriptionChange} title={"Edit your comment!"}>Description</EditModal>
-                    </div>
+                    </div >
             }
         </>
     )

@@ -5,6 +5,7 @@ import { AuthContext } from '../../context/auth.context'
 import usersService from '../../services/users.service'
 import Loader from '../../components/Loader/Loader'
 import AvatarImage from '../../components/Avatar/Avatar'
+import NoFriendsMessage from '../../components/NoFriendsMessage/NoFriendsMessage'
 
 const FriendsPage = () => {
 
@@ -56,29 +57,32 @@ const FriendsPage = () => {
         <>
             {
                 !isLoading ?
-                    < div className='friendsPage mt-5' >
+                    <div className='friendsPage mt-5' >
                         {
-                            friends.map(({ _id, avatar, username }) => {
-                                return (
-                                    <>
-                                        <div className='FriendGrid' key={_id}>
-                                            <a href={`/profile/${_id}`} >
-                                                <div className='InfoBlock'>
-                                                    <AvatarImage src={avatar} />
-                                                    <p className='ms-3'>{username}</p>
-                                                </div>
-                                            </a>
-                                            {
-                                                checkIfFriends(_id) ?
-                                                    <a onClick={() => unfollowUser(_id)} className="UnfollowBtn btn btn-light me-3">Unfollow</a>
-                                                    :
-                                                    <a onClick={() => followUser(_id)} className="FollowBtn btn btn-primary me-3">Follow</a>
-                                            }
+                            !friends.length ?
+                                <NoFriendsMessage />
+                                :
+                                friends.map(({ _id, avatar, username }) => {
+                                    return (
+                                        <div key={_id}>
+                                            <div className='FriendGrid'>
+                                                <a href={`/profile/${_id}`} >
+                                                    <div className='InfoBlock'>
+                                                        <AvatarImage src={avatar} />
+                                                        <p className='ms-3'>{username}</p>
+                                                    </div>
+                                                </a>
+                                                {
+                                                    checkIfFriends(_id) ?
+                                                        <a onClick={() => unfollowUser(_id)} className="UnfollowBtn btn btn-light me-3">Unfollow</a>
+                                                        :
+                                                        <a onClick={() => followUser(_id)} className="FollowBtn btn btn-primary me-3">Follow</a>
+                                                }
+                                            </div>
+                                            < hr />
                                         </div>
-                                        < hr />
-                                    </>
-                                )
-                            })
+                                    )
+                                })
                         }
                     </div >
                     :
