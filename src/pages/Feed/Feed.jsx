@@ -67,7 +67,7 @@ const Feed = () => {
     return (
         <>
             {
-                isLoading ? <Loader />
+                isLoading || !friendsPhotos.length ? <Loader />
                     :
                     !friendsPhotos.length ? <NoFriendsMessage />
                         :
