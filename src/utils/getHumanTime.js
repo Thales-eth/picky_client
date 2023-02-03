@@ -14,7 +14,7 @@ const getHumanTime = (time) => {
     }
 
     if (!days) {
-        minutesMsg = `${minutes} minutes,`
+        minutesMsg = `${minutes} minutes`
     }
 
     return `${daysMsg} ${hoursMsg} ${minutesMsg} ago`
