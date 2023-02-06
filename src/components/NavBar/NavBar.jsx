@@ -85,9 +85,14 @@ function NavBar() {
                             <NavDropdown.Item href="/register">
                                 Signup
                             </NavDropdown.Item>
-                            <NavDropdown.Item href="/my-profile">My Profile</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item onClick={logout} href="#">Logout</NavDropdown.Item>
+                            {
+                                user &&
+                                <>
+                                    <NavDropdown.Item href="/my-profile">My Profile</NavDropdown.Item>
+                                    <NavDropdown.Divider />
+                                    <NavDropdown.Item onClick={logout} href="#">Logout</NavDropdown.Item>
+                                </>
+                            }
                         </NavDropdown>
                         {
                             user &&

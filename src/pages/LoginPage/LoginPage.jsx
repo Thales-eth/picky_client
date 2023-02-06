@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { Row, Col, Form, Button, Container } from 'react-bootstrap'
 import authService from '../../services/auth.service'
 import Toast from '../../components/Toast/Toast'
+import ErrorCluster from '../../components/ErrorMessage/ErrorMessage'
 
 const LoginPage = () => {
 
@@ -17,8 +18,7 @@ const LoginPage = () => {
 
     const { setShowMessage } = useContext(MessageContext)
 
-    const [error, setError] = useState({ err: "" })
-    const { err } = error
+    const [errors, setErrors] = useState([])
 
     const navigate = useNavigate()
 
@@ -37,8 +37,8 @@ const LoginPage = () => {
                 })
                 navigate('/my-profile')
             })
-            .catch(({ response: { data } }) => {
-                setError(data)
+            .catch(({ response: { data: { err } } }) => {
+                setErrors(err)
             })
     }
 
@@ -72,10 +72,10 @@ const LoginPage = () => {
                             </div>
 
                             {
-                                err &&
-                                <p className='ErrorMessage' style={{ position: 'fixed', bottom: 30, right: 30 }}>
-                                    {err}
-                                </p>
+                                errors.length ?
+                                    <ErrorCluster errors={errors} />
+                                    :
+                                    null
                             }
                         </Form>
                     </Col>

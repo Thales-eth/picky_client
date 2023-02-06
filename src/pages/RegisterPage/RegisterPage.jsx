@@ -5,6 +5,7 @@ import { Row, Col, Form, Button, Container } from 'react-bootstrap'
 import { MessageContext } from '../../context/userMessage.context'
 import AuthService from '../../services/auth.service'
 import PhotoService from '../../services/photos.service'
+import ErrorCluster from '../../components/ErrorMessage/ErrorMessage'
 
 const RegisterPage = () => {
 
@@ -14,9 +15,15 @@ const RegisterPage = () => {
         password: "",
     })
 
+    const [errors, setErrors] = useState([])
+
     const [canClick, setCanClick] = useState(false)
 
     const { username, email, password } = user
+
+    useEffect(() => {
+        console.log(errors)
+    }, [errors])
 
     const navigate = useNavigate()
 
@@ -35,8 +42,7 @@ const RegisterPage = () => {
                 })
                 navigate('/login')
             })
-            .catch(e => console.log(e))
-
+            .catch(({ response: { data: { err } } }) => setErrors(err))
     }
 
     const handleInputChange = (e) => {
@@ -95,11 +101,17 @@ const RegisterPage = () => {
                                 </div>
                             </div>
 
+                            {
+                                errors.length ?
+                                    <ErrorCluster errors={errors} />
+                                    :
+                                    null
+                            }
                         </Form>
                     </Col>
                 </Row>
             </Container >
-        </div>
+        </div >
     )
 }
 

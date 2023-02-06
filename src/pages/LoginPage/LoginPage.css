@@ -7,6 +7,7 @@
 
 .ErrorMessage {
     background-color: rgb(218, 202, 202);
+    color: black;
     padding: 10px;
     border-radius: 2px;
 }

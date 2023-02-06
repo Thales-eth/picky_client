@@ -19,8 +19,8 @@ const Feed = () => {
     useEffect(() => {
         const token = getToken()
         setToken(token)
-
-        getFriendsPhotos(token)
+        token &&
+            getFriendsPhotos(token)
     }, [])
 
     const getFriendsPhotos = (token) => {
@@ -49,10 +49,6 @@ const Feed = () => {
     const checkIfFavorite = (id) => {
         return user.favoritePhotos.includes(id)
     }
-
-    useEffect(() => {
-        console.log(showHeart)
-    }, [showHeart])
 
     const triggerLike = (id) => {
         likePhoto(id)
