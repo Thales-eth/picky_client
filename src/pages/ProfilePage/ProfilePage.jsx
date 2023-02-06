@@ -27,8 +27,6 @@ const ProfilePage = () => {
 
     const checkIfFriends = (id) => {
         const mappedFriends = newFriends.map(({ _id }) => _id)
-        console.log("LOS NUEVOS FRIENDOS===>", mappedFriends)
-        console.log(mappedFriends.includes(id))
         return mappedFriends.includes(id)
     }
 

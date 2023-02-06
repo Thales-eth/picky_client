@@ -37,7 +37,6 @@ const AuthProviderWrapper = (props) => {
 
         else if (window.location.pathname !== '/'
             && window.location.pathname !== '/register') {
-            console.log(window.location.pathname)
             navigate('/login')
         }
     }

@@ -21,10 +21,6 @@ const RegisterPage = () => {
 
     const { username, email, password } = user
 
-    useEffect(() => {
-        console.log(errors)
-    }, [errors])
-
     const navigate = useNavigate()
 
     const { setShowMessage } = useContext(MessageContext)
