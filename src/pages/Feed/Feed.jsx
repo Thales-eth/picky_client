@@ -7,6 +7,7 @@ import AvatarImage from '../../components/Avatar/Avatar'
 import getHumanTime from '../../utils/getHumanTime'
 import Loader from '../../components/Loader/Loader'
 import NoFriendsMessage from '../../components/NoFriendsMessage/NoFriendsMessage'
+import { Link } from 'react-router-dom'
 
 const Feed = () => {
 
@@ -74,9 +75,9 @@ const Feed = () => {
                                         <div key={_id}>
                                             <div>
                                                 <div className="InfoBlock mb-3">
-                                                    <a href={`/profile/${author_id}`}>
+                                                    <Link href={`/profile/${author_id}`}>
                                                         <AvatarImage src={avatar} />
-                                                    </a>
+                                                    </Link>
                                                     <a href={`/profile/${author_id}`}>
                                                         <span className='ms-3'>{username}</span>
                                                     </a>

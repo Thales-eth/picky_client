@@ -25,7 +25,6 @@ class UserService extends InitAxios {
     getOneUser(user_id) {
         return this.api.get(`/getOneUser/${user_id}`).then(({ data }) => data)
     }
-
     // POR CHEQUEAR
     getLoggedUser(token) {
         const headers = {
