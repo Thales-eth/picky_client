@@ -1,5 +1,5 @@
 import './PhotoPage.css'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useState, useContext } from 'react'
 import { AuthContext } from '../../context/auth.context'
 import { MessageContext } from '../../context/userMessage.context'
@@ -156,12 +156,12 @@ const PhotoPage = () => {
                     <div className='PhotoPage mt-5'>
 
                         <div className="InfoBlock mb-3">
-                            <a href={`/profile/${author_id}`}>
+                            <Link to={`/profile/${author_id}`}>
                                 <Avatar src={avatar} />
-                            </a>
-                            <a href={`/profile/${author_id}`}>
+                            </Link>
+                            <Link to={`/profile/${author_id}`}>
                                 <span className='ms-3'>{username}</span>
-                            </a>
+                            </Link>
                         </div>
 
                         <div onDoubleClick={() => {

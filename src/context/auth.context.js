@@ -49,7 +49,6 @@ const AuthProviderWrapper = (props) => {
     }
 
     useEffect(() => {
-        console.log('APAREZCO SIEMPRE NO???')
         authenticateUser()
     }, [])
 

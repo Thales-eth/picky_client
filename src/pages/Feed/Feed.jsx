@@ -75,12 +75,12 @@ const Feed = () => {
                                         <div key={_id}>
                                             <div>
                                                 <div className="InfoBlock mb-3">
-                                                    <Link href={`/profile/${author_id}`}>
+                                                    <Link to={`/profile/${author_id}`}>
                                                         <AvatarImage src={avatar} />
                                                     </Link>
-                                                    <a href={`/profile/${author_id}`}>
+                                                    <Link to={`/profile/${author_id}`}>
                                                         <span className='ms-3'>{username}</span>
-                                                    </a>
+                                                    </Link>
                                                 </div>
 
                                                 <div className="ImageCard">
@@ -104,9 +104,9 @@ const Feed = () => {
                                                                 <AiOutlineHeart className='HeartLogo ms-3' onClick={() => likePhoto(_id)} color='red' size="30px" style={{ cursor: "pointer" }} />
                                                         }
                                                     </div>
-                                                    <a key={_id} href={`/photo/${_id}`}>
+                                                    <Link key={_id} to={`/photo/${_id}`}>
                                                         <span className='btn btn-light me-3'>View Details</span>
-                                                    </a>
+                                                    </Link>
 
                                                 </div>
                                             </div>

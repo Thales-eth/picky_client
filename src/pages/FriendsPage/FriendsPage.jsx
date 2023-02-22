@@ -1,6 +1,6 @@
 import './FriendsPage.css'
 import { useEffect, useState, useContext } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { AuthContext } from '../../context/auth.context'
 import usersService from '../../services/users.service'
 import Loader from '../../components/Loader/Loader'
@@ -66,12 +66,12 @@ const FriendsPage = () => {
                                     return (
                                         <div key={_id}>
                                             <div className='FriendGrid'>
-                                                <a href={`/profile/${_id}`} >
+                                                <Link to={`/profile/${_id}`} >
                                                     <div className='InfoBlock'>
                                                         <AvatarImage src={avatar} />
                                                         <p className='ms-3'>{username}</p>
                                                     </div>
-                                                </a>
+                                                </Link>
                                                 {
                                                     checkIfFriends(_id) ?
                                                         <a onClick={() => unfollowUser(_id)} className="UnfollowBtn btn btn-light me-3">Unfollow</a>
